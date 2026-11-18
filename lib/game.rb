@@ -71,4 +71,12 @@ class Game
       end
     end
   end
+
+  def hash
+    return {
+      word_to_solve: @word_to_solve,
+      guesses_remaining: @guesses_remaining,
+      guessed_letters: @guessed_letters
+    }
+  end
 end
