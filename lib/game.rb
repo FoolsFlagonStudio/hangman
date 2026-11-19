@@ -1,11 +1,11 @@
 require_relative "word_list.rb"
+require_relative "save_manager.rb"
 
 class Game
 
   def initialize(game_data)
     @guesses_remaining = game_data[:guesses_remaining]
     @word_to_solve = game_data[:word_to_solve]
-    puts game_data
     @player_solution = "_ " * game_data[:word_to_solve].length
     @guessed_letters = game_data[:guessed_letters]
     @in_progress = true
@@ -54,7 +54,9 @@ class Game
     elsif choice == "2"
       print_guessed_letters()
     else
-      # call save and quit from save manager
+      save_data = hash()
+      save_manager = SaveManager.new
+      save_manager.save_game(save_data)
     end
   end
 
